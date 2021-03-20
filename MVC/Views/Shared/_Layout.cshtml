@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Raysoft Akademi</title>
+    @Styles.Render("~/Content/css")
+
+</head>
+<body id="mobile_wrap">
+
+        @RenderBody()
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/audio")
+    @Scripts.Render("~/bundles/email")
+    @Scripts.Render("~/bundles/jqueryfit")
+    @Scripts.Render("~/bundles/jquerysw")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/myapp")
+    @Scripts.Render("~/bundles/jquerycus")
+    @Scripts.Render("~/bundles/simple")
+    @Scripts.Render("~/bundles/swipere")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+

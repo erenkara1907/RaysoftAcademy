@@ -1,0 +1,40 @@
+﻿@model IEnumerable<MVC.Models.Article>
+
+@{
+    ViewBag.Title = "ArticleList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ArticleList</h2
+
+@foreach (var item in Model)
+{
+    <div class="container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col">
+                <h2 class="mt-5 pt-3">@item.Title}</h2>
+                <div class="card shadow-sm bg-image hover-zoom">
+                    <img class="card-img-top" src="~/images/photos/photo1.jpg" style="height: 225px; width: 100%;" alt="Card image cap">
+
+                    <div class="card-body">
+
+                        <p class="card-text" [innerHTML]="@item.Description"></p>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" routerLink="/cityDetail/@item.Id"
+                                        class="btn btn-sm btn-outline-secondary">
+                                    View
+                                </button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            <small class="text-muted">@item.Author</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
