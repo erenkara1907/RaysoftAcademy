@@ -12,13 +12,8 @@ namespace MVC.Models
     {
         [Key]
         public int Id { get; set; }
-        public int ArticleId { get; set; }
         public DateTime DateAdded { get; set; }
         public string Description { get; set; }
-        public bool IsMain { get; set; }
-        public string Url { get; set; }
-        public string PublicId { get; set; }
-
-        public Article Article { get; set; }
+        public string Image { get; set; }
     }
 }

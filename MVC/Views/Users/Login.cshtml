@@ -1,49 +1,60 @@
 ﻿@model MVC.Models.User
 @{
-    ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_Admin.cshtml";
+    Layout = null;
 }
-
-<h2>Login</h2>
-
-@using (Html.BeginForm("Login", "Users", FormMethod.Post))
-{
-    <fieldset>
-        <legend>Mvc Simple Login Application Demo</legend>
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Üye Giriş</title>
+    <link href="~/Content/mail.css" rel="stylesheet" />
+</head>
+<body>
+    @using (Html.BeginForm("Login", "Users", FormMethod.Post))
+    {
         @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-        @if (@ViewBag.Message != null)
-        {
-            <div style="border: 1px solid red">
-                @ViewBag.Message
-            </div>
-        }
-        <table>
+
+        <table border="0" cellpadding="0" cellspacing="0">
             <tr>
-                <td>@Html.LabelFor(a => a.UserName)</td>
-                <td>@Html.TextBoxFor(a => a.UserName)</td>
-                <td>@Html.ValidationMessageFor(a => a.UserName)</td>
+                <th colspan="3">
+                    Giriş Ekranı
+                </th>
             </tr>
             <tr>
                 <td>
-                    @Html.LabelFor(a => a.Password)
+                    Üye Mail Adresi
                 </td>
                 <td>
-                    @Html.PasswordFor(a => a.Password)
+                    @Html.TextBoxFor(m => m.Email)
                 </td>
                 <td>
-                    @Html.ValidationMessageFor(a => a.Password)
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "error" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Parola
+                </td>
+                <td>
+                    @Html.PasswordFor(m => m.Password)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "error" })
                 </td>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    <input type="submit" value="Login" />
+                    <input type="submit" value="Giriş" />
                 </td>
-                <td></td>
+                <td>
+                    @Html.ActionLink("Şifremi Unuttum", "Index", "SifreHatirlat")
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3"><span class="renk ">@ViewBag.Mesaj</span></td>
             </tr>
         </table>
-    </fieldset>
-}
-
+    }
+</body>
+</html>

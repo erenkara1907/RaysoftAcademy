@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<MVC.Models.Article>
 
+
 @{
     ViewBag.Title = "ArticleList";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,7 +16,7 @@
             <div class="col">
                 <h2 class="mt-5 pt-3">@item.Title}</h2>
                 <div class="card shadow-sm bg-image hover-zoom">
-                    <img class="card-img-top" src="~/images/photos/photo1.jpg" style="height: 225px; width: 100%;" alt="Card image cap">
+                    <img class="card-img-top" src="~/images/@item.Image" style="height: 225px; width: 100%;" alt="Card image cap">
 
                     <div class="card-body">
 

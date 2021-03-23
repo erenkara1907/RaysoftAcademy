@@ -14,32 +14,33 @@ namespace MVC
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/audio").Include(
-                       "~/Scripts/js/audio.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                       "~/Scripts/js/jquery.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/email").Include(
-                     "~/Scripts/js/email.js"));
+            bundles.Add(new ScriptBundle("~/bundles/script").Include(
+                     "~/Scripts/js/script.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/myapp").Include(
-                     "~/Scripts/js/my-app.js"));
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                     "~/Scripts/js/bootstrap.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryfit").Include(
-                       "~/Scripts/js/jquery.fitvids.js"));
+            bundles.Add(new ScriptBundle("~/bundles/imagesloaded").Include(
+                       "~/Scripts/js/imagesloaded.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquerysw").Include(
-                       "~/Scripts/js/jquery-3.3.1.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/isotope").Include(
+                       "~/Scripts/js/isotope.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                       "~/Scripts/js/jquery.validate.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/jquery.tab-accordion").Include(
+                       "~/Scripts/js/jquery.tab-accordion.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquerycus").Include(
-                       "~/Scripts/js/jquery.custom.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/parallax").Include(
+                       "~/Scripts/js/parallax.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/simple").Include(
-                       "~/Scripts/js/simple-lightbox.js"));
+            bundles.Add(new ScriptBundle("~/bundles/smooth.scroll").Include(
+                       "~/Scripts/js/smooth.scroll.min.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/swiper").Include(
-                       "~/Scripts/js/swiper.min.js"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
@@ -51,9 +52,21 @@ namespace MVC
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/css/style.css",
-                      "~/Content/css/reset.css",
-                      "~/Content/css/swiper.css",
-                      "~/Content/css/simplelightbox.css"));
+                      "~/Content/css/content-box.css",
+                      "~/Content/css/image-box.css",
+                      "~/Content/css/animations.css",
+                      "~/Content/css/components.css",
+                       "~/Content/css/skin.css",
+                        "~/Content/css/font-awesome.css",
+                         "~/Content/css/bootstrap-theme.css",
+                          "~/Content/css/bootstrap-theme-min.css",
+                           "~/Content/css/bootstrap.css",
+                         "~/Content/css/Site.css"
+
+
+
+
+                      ));
         }
     }
 }

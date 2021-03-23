@@ -1,0 +1,56 @@
+﻿@model MVC.Models.Image
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Images", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Resim</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ArticleId, "Makale")
+        </div>
+
+        <div class="editor-field">
+            @Html.DropDownList("ArticleId", (IEnumerable<SelectListItem>)ViewBag.Articles, null, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ArticleId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ImageName)
+        </div>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ImageName)
+            @Html.ValidationMessageFor(model => model.ImageName)
+        </div>
+
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ImagePath)
+        </div>
+
+        <div class="editor-field">
+            <input type="file" name="file" />
+            @Html.ValidationMessageFor(model => model.ImagePath)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

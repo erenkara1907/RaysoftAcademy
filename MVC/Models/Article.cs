@@ -17,14 +17,7 @@ namespace MVC.Models
         public string Description { get; set; }
         public string Author { get; set; }
         public DateTime DateAdded { get; set; }
-        public string Photo { get; set; }
-
-        public List<Photo> Photos { get; set; }
-
-        public Article()
-        {
-            Photos = new List<Photo>();
-        }
+        public string Image { get; set; }
     }
 
     public class DatabaseContext : DbContext
@@ -33,5 +26,8 @@ namespace MVC.Models
 
         public System.Data.Entity.DbSet<MVC.Models.Photo> Photos { get; set; }
         public System.Data.Entity.DbSet<MVC.Models.User> Users { get; set; }
+        public System.Data.Entity.DbSet<MVC.Models.Image> Images { get; set; }
+        public System.Data.Entity.DbSet<MVC.Models.Training> Trainings { get; set; }
+        
     }
 }

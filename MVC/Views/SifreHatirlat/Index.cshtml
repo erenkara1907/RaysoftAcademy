@@ -1,0 +1,76 @@
+﻿@model MVC.Models.User
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sıfırlama Maili</title>
+    <style>
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        table {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+
+            table th {
+                background-color: #F7F7F7;
+                color: #333;
+                font-weight: bold;
+            }
+
+            table th, table td {
+                padding: 5px;
+                border: 1px solid #ccc;
+            }
+
+        .error {
+            color: red;
+        }
+
+        .renk {
+            color: Blue;
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm("Index", "SifreHatirlat", FormMethod.Post))
+    {
+        <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+                <th colspan="3">
+                    Şifre Sıfırlama Ekranı
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    Üye Mail Adresiniz
+                </td>
+                <td>
+                    @Html.TextBoxFor(m => m.Email)
+                </td>
+                <td>
+                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "error" })
+                </td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Sıfırlama Maili Gönder" />
+                </td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3" class="renk ">@ViewBag.Mesaj</td>
+            </tr>
+        </table>
+
+    }
+</body>
+</html>

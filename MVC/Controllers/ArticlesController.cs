@@ -23,6 +23,48 @@ namespace MVC.Controllers
             return View(db.Articles.ToList());
         }
 
+        public ActionResult Image()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Image(Article article, HttpPostedFileBase file)
+        {
+            //if (file != null)
+            //{
+            //    string imageName = System.IO.Path.GetFileName(file.FileName);
+            //    string path = Server.MapPath("~/content/images/" + imageName);
+            //    file.SaveAs(path);
+
+            //    article.Image = imageName;
+            //}
+
+            //if (ModelState.IsValid)
+            //{
+            //    db.Articles.Add(article);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
+            //return View(article);
+
+            if (Request.Files.Count > 0)
+            {
+                string DosyaAdi = Guid.NewGuid().ToString().Replace("-", "");
+                string uzanti = System.IO.Path.GetExtension(Request.Files[0].FileName);
+                string TamYolYeri = "~/images/" + DosyaAdi + uzanti;
+                Request.Files[0].SaveAs(Server.MapPath(TamYolYeri));
+
+                article.Image = DosyaAdi + uzanti;
+            }
+
+            db.Articles.Add(article);
+            db.SaveChanges();
+            return View();
+        }
+
         // GET: Articles/Details/5
         public ActionResult Details(int? id)
         {
@@ -51,6 +93,15 @@ namespace MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Title,Description,Author,DateAdded,Photo")] Article article)
         {
+            //try
+            //{
+
+            //}
+            //catch (DataException /* dex */)
+            //{
+            //    ////Log the error (uncomment dex variable name and add a line here to write a log.
+            //    //ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
+            //}
             try
             {
                 if (ModelState.IsValid)
@@ -65,7 +116,6 @@ namespace MVC.Controllers
                 //Log the error (uncomment dex variable name and add a line here to write a log.
                 ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
-
 
             return View(article);
         }
@@ -154,70 +204,13 @@ namespace MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        //[HttpPost]
-        //public ActionResult Upload()
-        //{
-        //    string directory = @"D:\Temp\";
-
-        //    HttpPostedFileBase photo = Request.Files["photo"];
-
-        //    if (photo != null && photo.ContentLength > 0)
-        //    {
-        //        var fileName = Path.GetFileName(photo.FileName);
-        //        photo.SaveAs(Path.Combine(directory, fileName));
-        //    }
-
-        //    return RedirectToAction("Index");
-        //}
-
-        //[HttpPost]
-        //public ActionResult Upload(HttpPostedFileBase photo)
-        //{
-        //    if (photo != null && photo.ContentLength > 0)
-        //    {
-        //        string directory = @"D:\Temp\";
-
-        //        if (photo.ContentLength > 10240)
-        //        {
-        //            ModelState.AddModelError("photo", "The size of the file should not exceed 10 KB");
-        //            return View();
-        //        }
-
-        //        var supportedTypes = new[] { "jpg", "jpeg", "png" };
-
-        //        var fileExt = System.IO.Path.GetExtension(photo.FileName).Substring(1);
-
-        //        if (!supportedTypes.Contains(fileExt))
-        //        {
-        //            ModelState.AddModelError("photo", "Invalid type. Only the following types (jpg, jpeg, png) are supported.");
-        //            return View();
-        //        }
-
-        //        var fileName = Path.GetFileName(photo.FileName);
-        //        photo.SaveAs(Path.Combine(directory, fileName));
-        //    }
-
-        //    return RedirectToAction("Index");
-        //}
-
-        //[HttpPost]
-        //public ActionResult Upload(IEnumerable<HttpPostedFileBase> files)
-        //{
-        //    foreach (var file in files)
-        //    {
-        //        file.SaveAs("...");
-        //    }
-
-        //    return RedirectToAction("Index");
-        //}
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                db.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

@@ -1,0 +1,36 @@
+﻿@model MVC.Models.Article
+
+@{
+    ViewBag.Title = "Image";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Resim Ekle</h2>
+@using (Html.BeginForm("Image", "Articles", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <p>Başlık</p>
+    @Html.TextBoxFor(model => model.Title);
+
+    <p>Açıklama</p>
+    @Html.TextBoxFor(model => model.Description)
+
+    <p>Yazar</p>
+    @Html.TextBoxFor(model => model.Author)
+
+    <p>Tarih</p>
+    @Html.TextBoxFor(model => model.DateAdded)
+
+    <p>Resim Ekle</p>
+    <input type="file" name="Image" accept="image/*" /> 
+    <input type="submit" value="Ekle" />
+}
+
+
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

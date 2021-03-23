@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Yonetim Sayfası</title>
+</head>
+<body>
+    <div>
+        @if (Session["UserName"] != null)
+        {
+
+            <h1>Yönetim Sayfasına Hoşgeldiniz.@Session["UserName"]</h1>
+            @Html.ActionLink("Güvenli Çıkış", "OturumKapa", "Yonetim")
+        }
+        else
+        {
+            <h1>Yetki yok</h1>
+        }
+    </div>
+</body>
+</html>
