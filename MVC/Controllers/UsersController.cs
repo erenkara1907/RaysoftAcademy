@@ -150,12 +150,16 @@ namespace MVC.Controllers
             //var kullanici = db.Users.FirstOrDefault(x => x.Email == eMail && x.Password == password);
             if (user != null)
             {
-                if (new LoginCheck().IsLoginSuccess(user))
+                if (user.Role == true)
+                {
+                    return RedirectToAction("AdminDashboard", "Home");
+                }
+                else if (new LoginCheck().IsLoginSuccess(user))
                 {
                     Session["UserName"] = user.UserName;
                     return RedirectToAction("Index", "Home");
                 }
-                else
+                else 
                 {
                     ViewBag.Mesaj = "Kullanıcı aktif edilmemiştir. Mailinize gönderilen aktivasyon linkini tıklayınız.";
                 }

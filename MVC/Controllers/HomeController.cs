@@ -34,5 +34,7 @@ namespace MVC.Controllers
         {
             return View(db.Articles.ToList());
         }
+
+        public
     }
 }
