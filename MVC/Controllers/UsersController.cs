@@ -104,7 +104,7 @@ namespace MVC.Controllers
             }
         }
 
-        private void SendActivationEmail(User user)
+        private void SendActivationEmail(User user) 
         {
             using (MailMessage mm = new MailMessage("erenkaraaa47@gmail.com", user.Email))
             {
